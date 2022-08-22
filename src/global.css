@@ -8,32 +8,71 @@
 }
 
 body {
-  background-color: dimgrey;
+  background-color: rgb(217, 228, 238);
 }
 
 main {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
   max-width: 480px;
-  height: 600px;
-  margin: 2em auto;
-  background-color: grey;
+  height: 400px;
+  margin: 2em 3em;
+  background-color: rgb(217, 228, 238);
 }
 main .cardInputArea {
-  padding: 0 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0;
   width: 100%;
 }
 
 main .cardInputArea input {
   width: inherit;
-  height: 25px;
+  height: 35px;
   border-radius: 5px;
   border: none;
   padding: 0 15px;
-  margin: 15px auto;
+  margin: 15px 15px 15px 0;
 }
 
 main .cardInputArea input:focus {
   outline: none;
+}
+
+main .cardInputArea button {
+  background-color: cornflowerblue;
+  height: 35px;
+  width: 65px;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+main .taskList {
+  padding: 0 15px;
+  height: 35px;
+  width: 100%;
+}
+
+main .taskList ul .taskRow {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+main .taskList ul .taskRow li {
+  cursor: pointer;
+  list-style-type: none;
+}
+
+.finallyTask {
+  color: green;
+}
+main .taskList ul .taskRow button {
+  cursor: pointer;
 }

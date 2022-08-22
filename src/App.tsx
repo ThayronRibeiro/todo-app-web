@@ -1,10 +1,29 @@
 import React, { ChangeEvent, useState, KeyboardEvent, useEffect } from "react";
 
+let task: Task[] = [
+  { title: "teste", finally: false },
+  { title: "teste 2", finally: false },
+];
+
+type Task = {
+  title: string;
+  finally: boolean;
+};
+
 function App() {
   const [todo, setTodo] = useState("");
+  const [taskFinally, setTaskFinally] = useState(false);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setTodo(e.target.value);
+    setTodo(e.target.value.toUpperCase());
+  };
+
+  const handlePushTask = () => {
+    task.push({
+      title: todo,
+      finally: true,
+    });
+    setTodo("");
   };
 
   useEffect(() => {
@@ -15,7 +34,12 @@ function App() {
         if (todo === "") {
           alert("Preencha os campos!");
         } else {
-          alert("Teste");
+          // alert(`Teste: ${todo}`);
+          task.push({
+            title: todo,
+            finally: true,
+          });
+          setTodo("");
         }
       }
     };
@@ -23,7 +47,12 @@ function App() {
     return () => {
       document.removeEventListener("keydown", listener);
     };
-  }, [todo]);
+  }, [todo, task]);
+
+  const handleFinally = () => {
+    setTaskFinally(!taskFinally);
+    return console.log("teste");
+  };
 
   return (
     <>
@@ -37,6 +66,26 @@ function App() {
             onChange={handleInputChange}
             placeholder="Digite uma tarefa para ser adicionada..."
           />
+          <button onClick={handlePushTask}>Incluir</button>
+        </div>
+
+        <div className="taskList">
+          <ul>
+            {task.map((item, index) => (
+              <div
+                className="taskRow"
+                onClick={() => {
+                  item.finally = false;
+                }}
+                key={index}
+              >
+                <li className={item.finally ? "finallyTask" : ""}>
+                  {item.title}
+                </li>
+                {/* <button onClick={handleFinally}>Finalizar</button> */}
+              </div>
+            ))}
+          </ul>
         </div>
       </main>
     </>
