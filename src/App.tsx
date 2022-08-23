@@ -1,29 +1,41 @@
 import React, { ChangeEvent, useState, KeyboardEvent, useEffect } from "react";
-
-let task: Task[] = [
-  { title: "teste", finally: false },
-  { title: "teste 2", finally: false },
-];
+import { v4 as uuid } from "uuid";
 
 type Task = {
+  id: string;
   title: string;
   finally: boolean;
 };
 
 function App() {
   const [todo, setTodo] = useState("");
-  const [taskFinally, setTaskFinally] = useState(false);
+  const [tasks, setTasks] = useState<Task[]>([]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTodo(e.target.value.toUpperCase());
   };
 
   const handlePushTask = () => {
-    task.push({
-      title: todo,
-      finally: true,
+    if (todo === "") {
+      alert("Preencha os campos!");
+    } else {
+      tasks.push({
+        id: uuid(),
+        title: todo,
+        finally: false,
+      });
+      setTodo("");
+    }
+  };
+
+  const handleFinally = (id: string) => {
+    tasks.map((item) => {
+      if (item.id === id) {
+        item.finally = !item.finally;
+        const tempTask = [...tasks];
+        setTasks(tempTask);
+      }
     });
-    setTodo("");
   };
 
   useEffect(() => {
@@ -34,10 +46,10 @@ function App() {
         if (todo === "") {
           alert("Preencha os campos!");
         } else {
-          // alert(`Teste: ${todo}`);
-          task.push({
+          tasks.push({
+            id: uuid(),
             title: todo,
-            finally: true,
+            finally: false,
           });
           setTodo("");
         }
@@ -47,17 +59,14 @@ function App() {
     return () => {
       document.removeEventListener("keydown", listener);
     };
-  }, [todo, task]);
-
-  const handleFinally = () => {
-    setTaskFinally(!taskFinally);
-    return console.log("teste");
-  };
+  }, [todo, tasks, handleFinally]);
 
   return (
     <>
       <main>
-        <h1>ToDo ReactJS</h1>
+        <div className="header">
+          <h1>TODO</h1>
+        </div>
         <div className="cardInputArea">
           <input
             id="todoInput"
@@ -71,18 +80,18 @@ function App() {
 
         <div className="taskList">
           <ul>
-            {task.map((item, index) => (
+            {tasks.map((item, index) => (
               <div
-                className="taskRow"
-                onClick={() => {
-                  item.finally = false;
-                }}
+                className={item.finally ? "taskRowFinally" : "taskRow"}
+                onClick={() => handleFinally(item.id)}
                 key={index}
               >
                 <li className={item.finally ? "finallyTask" : ""}>
                   {item.title}
                 </li>
-                {/* <button onClick={handleFinally}>Finalizar</button> */}
+                {/* <button onClick={() => handleFinally(item.id)}>
+                  Finalizar
+                </button> */}
               </div>
             ))}
           </ul>
