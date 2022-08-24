@@ -20,7 +20,7 @@ main {
   flex-direction: column;
   padding: 25px;
 }
-main .buttonHideComplete {
+/* main .buttonHideComplete {
   display: flex;
   padding: 0 25px;
   margin-bottom: 25px;
@@ -40,7 +40,7 @@ main .buttonHideComplete button:hover {
   transform: scale(1.1);
   border: aqua 3px solid;
   color: aqua;
-}
+} */
 .header {
   letter-spacing: 10px;
   color: aliceblue;

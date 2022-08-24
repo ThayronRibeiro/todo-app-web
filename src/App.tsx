@@ -1,5 +1,12 @@
 import React, { ChangeEvent, useState, KeyboardEvent, useEffect } from "react";
 import { v4 as uuid } from "uuid";
+import bgDark from "./assets/images/bg-mobile-dark.jpg";
+
+import { ButtonChange, ButtonContainer } from "./StyledComponents/ButtonChange";
+import { ButtonChangeMode } from "./StyledComponents/ButtonChangeMode";
+import { ContainerMain } from "./StyledComponents/ContainerMain";
+import { HeaderImg } from "./StyledComponents/HeaderImg";
+import { HeaderInfos } from "./StyledComponents/HeaderInfos";
 
 type Task = {
   id: string;
@@ -88,7 +95,14 @@ function App() {
 
   return (
     <>
-      <main>
+      <HeaderImg></HeaderImg>
+      <ContainerMain>
+        <HeaderInfos>
+          <h1>TODO</h1>
+          <ButtonChangeMode />
+        </HeaderInfos>
+      </ContainerMain>
+      {/* <main>
         <div className="header">
           <h1>TODO</h1>
           {tasks.length}
@@ -101,28 +115,34 @@ function App() {
             onChange={handleInputChange}
             placeholder="Digite uma tarefa para ser adicionada..."
           />
-          <button onClick={handlePushTask}>Incluir</button>
+          <button type="button" onClick={handlePushTask}>
+            Incluir
+          </button>
         </div>
 
-        <div className="buttonHideComplete">
-          <button
+        <ButtonContainer>
+          <ButtonChange
             onClick={() => {
               setShowAll(true);
               setShowCompleted(false);
             }}
+            active={showAll ? true : false}
           >
-            Show All
-          </button>
-          <button
+            Teste
+          </ButtonChange>
+          <ButtonChange
             onClick={() => {
               setShowAll(false);
               setShowCompleted(true);
             }}
+            active={showCompleted ? true : false}
           >
             Show Completed
-          </button>
-          <button onClick={handleClearComplete}>Clear Completed</button>
-        </div>
+          </ButtonChange>
+          <ButtonChange onClick={handleClearComplete}>
+            Clear Completed
+          </ButtonChange>
+        </ButtonContainer>
 
         <div className="taskList">
           {showAll ? (
@@ -169,13 +189,13 @@ function App() {
                     </div>
                   </div>
                 ) : (
-                  "Não há tarefas completadas"
+                  ""
                 )
               )}
             </ul>
           )}
         </div>
-      </main>
+      </main> */}
     </>
   );
 }
