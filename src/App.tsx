@@ -169,32 +169,11 @@ function App() {
                     </div>
                   </div>
                 ) : (
-                  ""
+                  "Não há tarefas completadas"
                 )
               )}
             </ul>
           )}
-          {/* <ul>
-            {tasks.map((item, index) => (
-              <div
-                className={item.finally ? "taskRowFinally" : "taskRow"}
-                key={index}
-              >
-                <li
-                  className={item.finally ? "finallyTask" : ""}
-                  onClick={() => handleFinally(item.id)}
-                >
-                  {item.title}
-                </li>
-                <div className="options">
-                  <span onClick={() => handleEdit(item.id, item.title)}>
-                    Editar
-                  </span>
-                  <span onClick={() => handleDelete(item.id)}>Excluir</span>
-                </div>
-              </div>
-            ))}
-          </ul> */}
         </div>
       </main>
     </>
