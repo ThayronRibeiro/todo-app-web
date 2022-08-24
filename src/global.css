@@ -20,6 +20,27 @@ main {
   flex-direction: column;
   padding: 25px;
 }
+main .buttonHideComplete {
+  display: flex;
+  padding: 0 25px;
+  margin-bottom: 25px;
+  gap: 25px;
+}
+main .buttonHideComplete button {
+  height: 35px;
+  width: 120px;
+  border-radius: 5px;
+  cursor: pointer;
+  background: transparent;
+  border: #fff 3px solid;
+  color: #fff;
+  transition: all ease 0.3s;
+}
+main .buttonHideComplete button:hover {
+  transform: scale(1.1);
+  border: aqua 3px solid;
+  color: aqua;
+}
 .header {
   letter-spacing: 10px;
   color: aliceblue;
@@ -65,37 +86,62 @@ main .taskList {
 }
 
 main .taskList ul .taskRow {
-  width: 70%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  margin-bottom: 15px;
+  padding: 3px 10px;
+}
+main .taskList ul .taskRow li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
-  background-color: #fff;
+  margin-bottom: 10px;
   padding: 3px 10px;
+  width: 40%;
+  cursor: pointer;
+  background-color: #fff;
+  list-style-type: none;
   border-radius: 5px;
   cursor: pointer;
 }
-
-main .taskList ul .taskRow li {
+main .taskList ul .taskRow .options span {
+  margin: 0 10px;
+  color: #fff;
   cursor: pointer;
-  list-style-type: none;
+  transform: scale(0.9);
+}
+main .taskList ul .taskRow .options span:hover {
+  transform: scale(1.5);
 }
 main .taskList ul .taskRowFinally {
-  width: 70%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  margin-bottom: 15px;
+  padding: 3px 10px;
+}
+main .taskList ul .taskRowFinally li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+  padding: 3px 10px;
+  width: 40%;
   background-color: rgb(228, 228, 228);
   opacity: 0.5;
-  padding: 3px 10px;
+  list-style-type: none;
   border-radius: 5px;
-  cursor: pointer;
-}
-main .taskList ul .taskRowFinally li {
   cursor: pointer;
   list-style-type: none;
 }
+main .taskList ul .taskRowFinally .options span {
+  margin: 0 10px;
+  color: #fff;
+  cursor: pointer;
+  transform: scale(0.9);
+}
+
 .finallyTask {
   color: green;
   opacity: 0.5;
