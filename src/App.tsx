@@ -91,6 +91,7 @@ function App() {
       <main>
         <div className="header">
           <h1>TODO</h1>
+          {tasks.length}
         </div>
         <div className="cardInputArea">
           <input
