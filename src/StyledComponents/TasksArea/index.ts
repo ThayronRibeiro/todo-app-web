@@ -12,7 +12,7 @@ export const TasksArea = styled.div<Props>`
   width: 100%;
   background-color: hsl(235, 24%, 19%);
   border-radius: 5px 5px 0px 0px;
-  height: 300px;
+  min-height: 300px;
   color: hsl(234, 39%, 85%);
   overflow: auto; 
   overflow-y: auto; 
