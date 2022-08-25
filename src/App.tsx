@@ -1,12 +1,16 @@
 import React, { ChangeEvent, useState, KeyboardEvent, useEffect } from "react";
 import { v4 as uuid } from "uuid";
-import bgDark from "./assets/images/bg-mobile-dark.jpg";
+
+import crossIcon from "./assets/images/icon-cross.svg";
+import { Body } from "./StyledComponents/Body";
 
 import { ButtonChange, ButtonContainer } from "./StyledComponents/ButtonChange";
 import { ButtonChangeMode } from "./StyledComponents/ButtonChangeMode";
 import { ContainerMain } from "./StyledComponents/ContainerMain";
 import { HeaderImg } from "./StyledComponents/HeaderImg";
 import { HeaderInfos } from "./StyledComponents/HeaderInfos";
+import { Circle, InputArea, InputTodo } from "./StyledComponents/InputArea";
+import { TasksArea } from "./StyledComponents/TasksArea";
 
 type Task = {
   id: string;
@@ -19,6 +23,8 @@ function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [showAll, setShowAll] = useState(true);
   const [showCompleted, setShowCompleted] = useState(false);
+
+  const [darkMode, setDarkMode] = useState(true);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTodo(e.target.value.toUpperCase());
@@ -95,12 +101,79 @@ function App() {
 
   return (
     <>
-      <HeaderImg></HeaderImg>
+      <Body darkMode={darkMode} />
+      <HeaderImg darkMode={darkMode} />
       <ContainerMain>
         <HeaderInfos>
           <h1>TODO</h1>
-          <ButtonChangeMode />
+          <ButtonChangeMode
+            dark={darkMode}
+            onClick={() => setDarkMode(!darkMode)}
+          />
         </HeaderInfos>
+
+        <InputArea>
+          <Circle />
+          <InputTodo
+            type="text"
+            placeholder="Create a new todo..."
+            id="todoInput"
+            value={todo}
+            onChange={handleInputChange}
+          />
+        </InputArea>
+
+        <TasksArea>
+          {showAll ? (
+            <ul>
+              {tasks.map((item, index) => (
+                <div
+                  className={item.finally ? "taskRowFinally" : "taskRow"}
+                  key={index}
+                >
+                  <li
+                    className={item.finally ? "finallyTask" : ""}
+                    onClick={() => handleFinally(item.id)}
+                  >
+                    {item.title}
+                  </li>
+                  <div className="options">
+                    <span onClick={() => handleEdit(item.id, item.title)}>
+                      Editar
+                    </span>
+                    <span onClick={() => handleDelete(item.id)}>Excluir</span>
+                  </div>
+                </div>
+              ))}
+            </ul>
+          ) : (
+            <ul>
+              {tasks.map((item, index) =>
+                item.finally ? (
+                  <div
+                    className={item.finally ? "taskRowFinally" : "taskRow"}
+                    key={index}
+                  >
+                    <li
+                      className={item.finally ? "finallyTask" : ""}
+                      onClick={() => handleFinally(item.id)}
+                    >
+                      {item.title}
+                    </li>
+                    <div className="options">
+                      <span onClick={() => handleEdit(item.id, item.title)}>
+                        Editar
+                      </span>
+                      <span onClick={() => handleDelete(item.id)}>Excluir</span>
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )
+              )}
+            </ul>
+          )}
+        </TasksArea>
       </ContainerMain>
       {/* <main>
         <div className="header">

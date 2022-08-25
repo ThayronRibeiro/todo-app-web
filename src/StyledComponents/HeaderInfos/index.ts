@@ -7,5 +7,5 @@ export const HeaderInfos = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 0 30px;
+  margin: 25px 0px;
 `;
