@@ -9,9 +9,8 @@ export const HeaderInfos = styled.div`
   align-items: center;
   margin: 25px 0px;
 
-  @media screen and (max-width: 760px) {
+  @media screen and (min-width: 760px) {
     & {
       max-width: 500px;
     }
-  }
 `;

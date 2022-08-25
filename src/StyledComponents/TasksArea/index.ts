@@ -16,7 +16,7 @@ export const TasksArea = styled.div<Props>`
   color: hsl(234, 39%, 85%);
   overflow-y: auto;
 
-  @media screen and (max-width: 760px) {
+  @media screen and (min-width: 760px) {
     & {
       max-width: 500px;
     }

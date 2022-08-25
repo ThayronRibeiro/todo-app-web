@@ -17,7 +17,7 @@ const ContainerFilters = styled.div`
     font-weight: 800;
   }
 
-  @media screen and (max-width: 760px) {
+  @media screen and (min-width: 760px) {
     & {
       max-width: 500px;
     }

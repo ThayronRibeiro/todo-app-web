@@ -16,7 +16,7 @@ const ContainerFooterTaskArea = styled.div`
     font-size: 12px;
   }
 
-  @media screen and (max-width: 760px) {
+  @media screen and (min-width: 760px) {
     & {
       max-width: 500px;
     }
