@@ -10,7 +10,7 @@ export const InputArea = styled.div`
   align-items: center;
   width: 100%;
   background-color: hsl(235, 24%, 19%);
-  height: 50px;
+  min-height: 50px;
   border-radius: 5px;
   color: hsl(234, 39%, 85%);
   padding: 0 25px;
