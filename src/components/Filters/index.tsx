@@ -11,11 +11,16 @@ const ContainerFilters = styled.div`
   color: hsl(234, 39%, 75%);
   margin: 25px 0;
   border-radius: 5px;
-  max-width: 500px;
 
   span {
     font-size: 14px;
     font-weight: 800;
+  }
+
+  @media screen and (max-width: 760px) {
+    & {
+      max-width: 500px;
+    }
 `;
 
 type Props = {

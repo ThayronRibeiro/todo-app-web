@@ -14,7 +14,11 @@ export const InputArea = styled.div`
   border-radius: 5px;
   color: hsl(234, 39%, 85%);
   padding: 0 25px;
-  max-width: 500px;
+
+  @media screen and (max-width: 760px) {
+    & {
+      max-width: 500px;
+    }
 `;
 
 export const Circle = styled.div`
