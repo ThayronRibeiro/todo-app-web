@@ -15,7 +15,7 @@ export const TasksArea = styled.div<Props>`
   height: 300px;
   color: hsl(234, 39%, 85%);
   overflow-y: scroll;
-
+  white-space:nowrap;
   height: -webkit-fill-available;
   -webkit-overflow-scrolling: touch;
 
