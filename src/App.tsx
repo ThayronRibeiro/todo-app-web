@@ -2,6 +2,9 @@ import React, { ChangeEvent, useState, KeyboardEvent, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 
 import crossIcon from "./assets/images/icon-cross.svg";
+import { Filters } from "./components/Filters";
+import { FooterTaskArea } from "./components/FooterTaskArea";
+import { ItemTask } from "./components/ItemTask";
 import { Body } from "./StyledComponents/Body";
 
 import { ButtonChange, ButtonContainer } from "./StyledComponents/ButtonChange";
@@ -12,7 +15,7 @@ import { HeaderInfos } from "./StyledComponents/HeaderInfos";
 import { Circle, InputArea, InputTodo } from "./StyledComponents/InputArea";
 import { TasksArea } from "./StyledComponents/TasksArea";
 
-type Task = {
+export type Task = {
   id: string;
   title: string;
   finally: boolean;
@@ -25,6 +28,7 @@ function App() {
   const [showCompleted, setShowCompleted] = useState(false);
 
   const [darkMode, setDarkMode] = useState(true);
+  const [activeFilter, setActiveFilter] = useState("All");
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTodo(e.target.value.toUpperCase());
@@ -71,6 +75,17 @@ function App() {
     }
   };
 
+  const handleShowAll = () => {
+    setShowAll(true);
+    setShowCompleted(false);
+    setActiveFilter("All");
+  };
+
+  const handleShowCompleted = () => {
+    setShowAll(false);
+    setShowCompleted(true);
+    setActiveFilter("Completed");
+  };
   const handleClearComplete = () => {
     const tempTask = tasks.filter((completed) => completed.finally != true);
     setTasks(tempTask);
@@ -97,7 +112,7 @@ function App() {
     return () => {
       document.removeEventListener("keydown", listener);
     };
-  }, [todo, tasks, handleFinally]);
+  }, [todo, tasks, InputArea, ItemTask, handleFinally]);
 
   return (
     <>
@@ -123,57 +138,59 @@ function App() {
           />
         </InputArea>
 
-        <TasksArea>
-          {showAll ? (
-            <ul>
+        {showAll ? (
+          <>
+            <TasksArea>
               {tasks.map((item, index) => (
-                <div
-                  className={item.finally ? "taskRowFinally" : "taskRow"}
+                <ItemTask
                   key={index}
-                >
-                  <li
-                    className={item.finally ? "finallyTask" : ""}
-                    onClick={() => handleFinally(item.id)}
-                  >
-                    {item.title}
-                  </li>
-                  <div className="options">
-                    <span onClick={() => handleEdit(item.id, item.title)}>
-                      Editar
-                    </span>
-                    <span onClick={() => handleDelete(item.id)}>Excluir</span>
-                  </div>
-                </div>
+                  title={item.title}
+                  complete={item.finally}
+                  onClickDelete={() => handleDelete(item.id)}
+                  onClickComplete={() => handleFinally(item.id)}
+                />
               ))}
-            </ul>
-          ) : (
-            <ul>
+            </TasksArea>
+            <FooterTaskArea
+              tasks={tasks}
+              onClickDeleteAllComplete={handleClearComplete}
+            />
+            <Filters
+              showAll={handleShowAll}
+              showCompleted={handleShowCompleted}
+              activeFilter={activeFilter}
+            />
+          </>
+        ) : (
+          <>
+            <TasksArea>
               {tasks.map((item, index) =>
                 item.finally ? (
-                  <div
-                    className={item.finally ? "taskRowFinally" : "taskRow"}
-                    key={index}
-                  >
-                    <li
-                      className={item.finally ? "finallyTask" : ""}
-                      onClick={() => handleFinally(item.id)}
-                    >
-                      {item.title}
-                    </li>
-                    <div className="options">
-                      <span onClick={() => handleEdit(item.id, item.title)}>
-                        Editar
-                      </span>
-                      <span onClick={() => handleDelete(item.id)}>Excluir</span>
-                    </div>
-                  </div>
+                  <>
+                    <ItemTask
+                      key={index}
+                      title={item.title}
+                      complete={item.finally}
+                      onClickDelete={() => handleDelete(item.id)}
+                      onClickComplete={() => handleFinally(item.id)}
+                    />
+                  </>
                 ) : (
                   ""
                 )
               )}
-            </ul>
-          )}
-        </TasksArea>
+            </TasksArea>
+            <FooterTaskArea
+              tasks={tasks}
+              onClickDeleteAllComplete={handleClearComplete}
+            />
+            <Filters
+              showAll={handleShowAll}
+              showCompleted={handleShowCompleted}
+              activeFilter={activeFilter}
+            />
+          </>
+        )}
       </ContainerMain>
       {/* <main>
         <div className="header">

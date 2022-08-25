@@ -1,15 +1,18 @@
 import styled from "styled-components";
 
-export const TasksArea = styled.div`
-  margin: 25px 0;
+interface Props {
+  children: any;
+}
+
+export const TasksArea = styled.div<Props>`
+  margin: 25px 0px 0px 0px;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  flex-direction: column;
+  justify-content: baseline;
   width: 100%;
   background-color: hsl(235, 24%, 19%);
+  border-radius: 5px 5px 0px 0px;
   height: 300px;
-  border-radius: 5px;
   color: hsl(234, 39%, 85%);
-  padding: 0 25px;
-  overflow-y: scroll;
+  overflow-y: auto;
 `;

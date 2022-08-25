@@ -17,7 +17,7 @@ export const Circle = styled.div`
   height: 25px;
   border: hsl(234, 39%, 85%) 2px solid;
   border-radius: 50%;
-  opacity: 0.5;
+  opacity: 0.1;
   margin-right: 15px;
 `;
 
