@@ -16,6 +16,9 @@ export const TasksArea = styled.div<Props>`
   color: hsl(234, 39%, 85%);
   overflow-y: scroll;
 
+  height: -webkit-fill-available;
+  -webkit-overflow-scrolling: touch;
+
   @media screen and (min-width: 760px) {
     & {
       max-width: 500px;
