@@ -11,6 +11,7 @@ const ContainerFooterTaskArea = styled.div`
   color: hsl(234, 39%, 75%);
   border-top: 1px solid hsl(234, 39%, 85%);
   border-radius: 0px 0px 5px 5px;
+  max-width: 500px;
 
   span {
     font-size: 12px;

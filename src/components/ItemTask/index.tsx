@@ -8,10 +8,12 @@ interface Props {
   complete?: boolean;
   onClickDelete?: () => void;
   onClickComplete?: () => void;
+  darkMode?: boolean;
 }
 
 type PropsContainer = {
   completeTask?: boolean;
+  darkMode?: boolean;
 };
 
 const ContainerItemTask = styled.div<PropsContainer>`
@@ -19,7 +21,8 @@ const ContainerItemTask = styled.div<PropsContainer>`
   justify-content: space-between;
   width: 100%;
   height: 60px;
-  background-color: hsl(235, 24%, 19%);
+  background-color: ${(props) =>
+    props.darkMode ? "hsl(235, 24%, 19%)" : "#fff"}
   color: hsl(234, 39%, 85%);
   border-radius: 5px 5px 0px 0px;
 
@@ -65,10 +68,11 @@ export const ItemTask = ({
   complete,
   onClickDelete,
   onClickComplete,
+  darkMode,
 }: Props) => {
   return (
     <>
-      <ContainerItemTask completeTask={complete}>
+      <ContainerItemTask completeTask={complete} darkMode={darkMode}>
         <div className="task">
           <div>
             {complete ? (

@@ -11,6 +11,7 @@ const ContainerFilters = styled.div`
   color: hsl(234, 39%, 75%);
   margin: 25px 0;
   border-radius: 5px;
+  max-width: 500px;
 
   span {
     font-size: 14px;

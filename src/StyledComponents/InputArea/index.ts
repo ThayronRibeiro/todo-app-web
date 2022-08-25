@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+type Props = {
+  darkMode?: boolean;
+};
+
 export const InputArea = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -10,6 +14,7 @@ export const InputArea = styled.div`
   border-radius: 5px;
   color: hsl(234, 39%, 85%);
   padding: 0 25px;
+  max-width: 500px;
 `;
 
 export const Circle = styled.div`

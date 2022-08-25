@@ -17,5 +17,6 @@ export const ButtonChangeMode = styled.div<Props>`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   transition: all ease 0.5s;
 `;

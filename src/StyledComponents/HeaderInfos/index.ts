@@ -8,4 +8,5 @@ export const HeaderInfos = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 25px 0px;
+  max-width: 500px;
 `;

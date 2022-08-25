@@ -173,6 +173,7 @@ function App() {
                       complete={item.finally}
                       onClickDelete={() => handleDelete(item.id)}
                       onClickComplete={() => handleFinally(item.id)}
+                      darkMode={darkMode}
                     />
                   </>
                 ) : (
