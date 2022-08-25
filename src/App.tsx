@@ -93,7 +93,11 @@ function App() {
 
   useEffect(() => {
     const listener = (event: any) => {
-      if (event.code === "Enter" || event.code === "NumpadEnter") {
+      if (
+        event.code === "Enter" ||
+        event.code === "NumpadEnter" ||
+        event.keyCode === 13
+      ) {
         console.log("Enter key was pressed. Run your function.");
         event.preventDefault();
         if (todo === "") {
