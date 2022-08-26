@@ -20,7 +20,7 @@ const ContainerItemTask = styled.div<PropsContainer>`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 60px;
+  min-height: 60px;
   background-color: ${(props) =>
     props.darkMode ? "hsl(235, 24%, 19%)" : "#fff"}
   color: hsl(234, 39%, 85%);
