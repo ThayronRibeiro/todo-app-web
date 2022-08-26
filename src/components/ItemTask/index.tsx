@@ -21,10 +21,11 @@ const ContainerItemTask = styled.div<PropsContainer>`
   justify-content: space-between;
   width: 100%;
   min-height: 60px;
-  background-color: ${(props) =>
-    props.darkMode ? "hsl(235, 24%, 19%)" : "#fff"}
-  color: hsl(234, 39%, 85%);
+  color: ${(props) =>
+    props.darkMode ? "hsl(234, 39%, 85%);" : "hsl(235, 19%, 35%)"};
   border-radius: 5px 5px 0px 0px;
+  background-color: ${(props) => (props.darkMode ? "var(--darkBack)" : "#fff")};
+  transition: all ease 0.5s;
 
   & .task {
     display: flex;

@@ -6,3 +6,8 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+
+:root {
+  --darkBack: hsl(235, 24%, 19%);
+  --lightBack: hsl(0, 0%, 98%);
+}

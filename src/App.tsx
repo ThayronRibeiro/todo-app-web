@@ -143,7 +143,7 @@ function App() {
           />
         </HeaderInfos>
 
-        <InputArea>
+        <InputArea darkMode={darkMode}>
           <Circle />
           <InputTodo
             type="text"
@@ -156,7 +156,7 @@ function App() {
 
         {showAll && (
           <>
-            <TasksArea>
+            <TasksArea darkMode={darkMode}>
               {tasks.map((item, index) => (
                 <ItemTask
                   key={index}
@@ -164,14 +164,17 @@ function App() {
                   complete={item.finally}
                   onClickDelete={() => handleDelete(item.id)}
                   onClickComplete={() => handleFinally(item.id)}
+                  darkMode={darkMode}
                 />
               ))}
             </TasksArea>
             <FooterTaskArea
+              darkMode={darkMode}
               tasks={tempArrayCount}
               onClickDeleteAllComplete={handleClearComplete}
             />
             <Filters
+              darkMode={darkMode}
               showAll={handleShowAll}
               showCompleted={handleShowCompleted}
               showActive={handleShowActive}
@@ -182,7 +185,7 @@ function App() {
 
         {showActive && (
           <>
-            <TasksArea>
+            <TasksArea darkMode={darkMode}>
               {tasks.map((item, index) =>
                 !item.finally ? (
                   <ItemTask
@@ -199,10 +202,12 @@ function App() {
               )}
             </TasksArea>
             <FooterTaskArea
+              darkMode={darkMode}
               tasks={tempArrayCount}
               onClickDeleteAllComplete={handleClearComplete}
             />
             <Filters
+              darkMode={darkMode}
               showAll={handleShowAll}
               showCompleted={handleShowCompleted}
               showActive={handleShowActive}
@@ -213,7 +218,7 @@ function App() {
 
         {showCompleted && (
           <>
-            <TasksArea>
+            <TasksArea darkMode={darkMode}>
               {tasks.map((item, index) =>
                 item.finally ? (
                   <ItemTask
@@ -230,10 +235,12 @@ function App() {
               )}
             </TasksArea>
             <FooterTaskArea
+              darkMode={darkMode}
               tasks={tempArrayCount}
               onClickDeleteAllComplete={handleClearComplete}
             />
             <Filters
+              darkMode={darkMode}
               showAll={handleShowAll}
               showCompleted={handleShowCompleted}
               showActive={handleShowActive}

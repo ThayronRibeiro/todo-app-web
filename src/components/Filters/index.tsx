@@ -1,15 +1,21 @@
 import styled from "styled-components";
 
-const ContainerFilters = styled.div`
+type StyleProps = {
+  darkModeColor?: boolean;
+};
+
+const ContainerFilters = styled.div<StyleProps>`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-color: hsl(235, 24%, 19%);
   padding: 10px 25px;
   color: hsl(234, 39%, 75%);
   margin: 25px 0 50px 0;
   border-radius: 5px;
+  transition: all ease .5s;
+  background-color: ${(props) =>
+    props.darkModeColor ? "var(--darkBack)" : "var(--lightBack)"}; 
 
   span {
     font-size: 14px;
@@ -27,6 +33,7 @@ const ContainerFilters = styled.div`
 `;
 
 type Props = {
+  darkMode?: boolean;
   showAll?: () => void;
   showCompleted?: () => void;
   showActive?: () => void;
@@ -34,13 +41,14 @@ type Props = {
 };
 
 export const Filters = ({
+  darkMode,
   showAll,
   showCompleted,
   showActive,
   activeFilter,
 }: Props) => {
   return (
-    <ContainerFilters>
+    <ContainerFilters darkModeColor={darkMode}>
       <span
         style={{
           color:
