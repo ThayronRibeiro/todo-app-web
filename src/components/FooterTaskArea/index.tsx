@@ -14,6 +14,13 @@ const ContainerFooterTaskArea = styled.div`
 
   span {
     font-size: 12px;
+
+    &:last-child {
+      cursor: pointer;
+    }
+    &:last-child:hover {
+      transform: scale(1.1);
+    }
   }
 
   @media screen and (min-width: 760px) {

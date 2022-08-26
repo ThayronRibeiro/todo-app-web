@@ -14,6 +14,10 @@ const ContainerFilters = styled.div`
   span {
     font-size: 14px;
     font-weight: 800;
+    cursor: pointer;
+  }
+  span:hover {
+    transform: scale(1.1);
   }
 
   @media screen and (min-width: 760px) {
