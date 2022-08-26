@@ -26,6 +26,7 @@ function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [showAll, setShowAll] = useState(true);
   const [showCompleted, setShowCompleted] = useState(false);
+  const [showActive, setShowActive] = useState(false);
 
   const [darkMode, setDarkMode] = useState(true);
   const [activeFilter, setActiveFilter] = useState("All");
@@ -69,7 +70,7 @@ function App() {
   };
 
   const handleDelete = (id: string) => {
-    if (window.confirm("Confirma a exclução da tarefa?") == true) {
+    if (window.confirm("Confirm task deletion?") == true) {
       const tempTask = tasks.filter((del) => del.id != id);
       setTasks(tempTask);
     }
@@ -78,18 +79,29 @@ function App() {
   const handleShowAll = () => {
     setShowAll(true);
     setShowCompleted(false);
+    setShowActive(false);
     setActiveFilter("All");
   };
 
-  const handleShowCompleted = () => {
+  const handleShowActive = () => {
+    setShowActive(true);
     setShowAll(false);
+    setShowCompleted(false);
+    setActiveFilter("Active");
+  };
+
+  const handleShowCompleted = () => {
     setShowCompleted(true);
+    setShowAll(false);
+    setShowActive(false);
     setActiveFilter("Completed");
   };
   const handleClearComplete = () => {
     const tempTask = tasks.filter((completed) => completed.finally != true);
     setTasks(tempTask);
   };
+
+  var tempArrayCount = tasks?.filter((value) => value.finally != true);
 
   useEffect(() => {
     const listener = (event: any) => {
@@ -142,7 +154,7 @@ function App() {
           />
         </InputArea>
 
-        {showAll ? (
+        {showAll && (
           <>
             <TasksArea>
               {tasks.map((item, index) => (
@@ -156,42 +168,75 @@ function App() {
               ))}
             </TasksArea>
             <FooterTaskArea
-              tasks={tasks}
+              tasks={tempArrayCount}
               onClickDeleteAllComplete={handleClearComplete}
             />
             <Filters
               showAll={handleShowAll}
               showCompleted={handleShowCompleted}
+              showActive={handleShowActive}
               activeFilter={activeFilter}
             />
           </>
-        ) : (
+        )}
+
+        {showActive && (
           <>
             <TasksArea>
               {tasks.map((item, index) =>
-                item.finally ? (
-                  <>
-                    <ItemTask
-                      key={index}
-                      title={item.title}
-                      complete={item.finally}
-                      onClickDelete={() => handleDelete(item.id)}
-                      onClickComplete={() => handleFinally(item.id)}
-                      darkMode={darkMode}
-                    />
-                  </>
+                !item.finally ? (
+                  <ItemTask
+                    key={index}
+                    title={item.title}
+                    complete={item.finally}
+                    onClickDelete={() => handleDelete(item.id)}
+                    onClickComplete={() => handleFinally(item.id)}
+                    darkMode={darkMode}
+                  />
                 ) : (
                   ""
                 )
               )}
             </TasksArea>
             <FooterTaskArea
-              tasks={tasks}
+              tasks={tempArrayCount}
               onClickDeleteAllComplete={handleClearComplete}
             />
             <Filters
               showAll={handleShowAll}
               showCompleted={handleShowCompleted}
+              showActive={handleShowActive}
+              activeFilter={activeFilter}
+            />
+          </>
+        )}
+
+        {showCompleted && (
+          <>
+            <TasksArea>
+              {tasks.map((item, index) =>
+                item.finally ? (
+                  <ItemTask
+                    key={index}
+                    title={item.title}
+                    complete={item.finally}
+                    onClickDelete={() => handleDelete(item.id)}
+                    onClickComplete={() => handleFinally(item.id)}
+                    darkMode={darkMode}
+                  />
+                ) : (
+                  ""
+                )
+              )}
+            </TasksArea>
+            <FooterTaskArea
+              tasks={tempArrayCount}
+              onClickDeleteAllComplete={handleClearComplete}
+            />
+            <Filters
+              showAll={handleShowAll}
+              showCompleted={handleShowCompleted}
+              showActive={handleShowActive}
               activeFilter={activeFilter}
             />
           </>

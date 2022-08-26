@@ -20,6 +20,8 @@ export const TasksArea = styled.div<Props>`
   @media screen and (min-width: 760px) {
     & {
       max-width: 500px;
+      min-height: 200px;
+      max-height: 280px;
       overflow-y: auto;
     }
 `;

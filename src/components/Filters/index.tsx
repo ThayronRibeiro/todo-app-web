@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 
 const ContainerFilters = styled.div`
@@ -9,7 +8,7 @@ const ContainerFilters = styled.div`
   background-color: hsl(235, 24%, 19%);
   padding: 10px 25px;
   color: hsl(234, 39%, 75%);
-  margin: 25px 0;
+  margin: 25px 0 50px 0;
   border-radius: 5px;
 
   span {
@@ -26,10 +25,16 @@ const ContainerFilters = styled.div`
 type Props = {
   showAll?: () => void;
   showCompleted?: () => void;
+  showActive?: () => void;
   activeFilter?: string;
 };
 
-export const Filters = ({ showAll, showCompleted, activeFilter }: Props) => {
+export const Filters = ({
+  showAll,
+  showCompleted,
+  showActive,
+  activeFilter,
+}: Props) => {
   return (
     <ContainerFilters>
       <span
@@ -50,6 +55,7 @@ export const Filters = ({ showAll, showCompleted, activeFilter }: Props) => {
               ? "hsl(220, 98%, 61%)"
               : "hsl(234, 39%, 75%)",
         }}
+        onClick={showActive}
       >
         Active
       </span>
