@@ -16,6 +16,8 @@ export const TasksArea = styled.div<Props>`
   color: hsl(234, 39%, 85%);
   -webkit-overflow-y: auto; 
   -webkit-overflow-scrolling: touch; 
+  ::-webkit-scrollbar{width:6px;border-left:1px solid #E6ECF8;}
+  ::-webkit-scrollbar-thumb{background-color:#f0e2d2;}
 
   @media screen and (min-width: 760px) {
     & {
