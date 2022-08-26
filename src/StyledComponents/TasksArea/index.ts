@@ -15,6 +15,7 @@ export const TasksArea = styled.div<Props>`
   min-height: 300px;
   color: hsl(234, 39%, 85%);
   overflow-y: auto; 
+  overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch; 
   ::-webkit-scrollbar{width:6px;border-left:1px solid #E6ECF8;}
   ::-webkit-scrollbar-thumb{background-color:#f0e2d2;}
