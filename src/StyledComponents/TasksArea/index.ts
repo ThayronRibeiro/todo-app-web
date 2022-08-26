@@ -14,9 +14,8 @@ export const TasksArea = styled.div<Props>`
   border-radius: 5px 5px 0px 0px;
   min-height: 300px;
   color: hsl(234, 39%, 85%);
-  overflow: auto; 
-  overflow-y: auto; 
-  overflow-x: hidden; 
+  -webkit-overflow-y: auto; 
+  -webkit-overflow-scrolling: touch; 
 
   @media screen and (min-width: 760px) {
     & {
